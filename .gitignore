@@ -21,6 +21,15 @@ __pycache__/
 # JetBrains
 .idea/
 
+# uploads backend
+backend/uploads/
+
+# next cache
+frontend/.next/cache/
+
+# python env files
+backend/.python-version
+
 # =========================================================
 # BACKEND (Python / FastAPI / Django etc.)
 # =========================================================
