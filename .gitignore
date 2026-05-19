@@ -1,0 +1,86 @@
+# =========================================================
+# ROOT
+# =========================================================
+.DS_Store
+Thumbs.db
+*.log
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# VSCode
+.vscode/
+
+# JetBrains
+.idea/
+
+# =========================================================
+# BACKEND (Python / FastAPI / Django etc.)
+# =========================================================
+backend/.venv/
+backend/venv/
+backend/env/
+
+backend/__pycache__/
+backend/**/*.pyc
+
+# Python build
+backend/build/
+backend/dist/
+backend/*.egg-info/
+
+# pytest
+backend/.pytest_cache/
+
+# mypy
+backend/.mypy_cache/
+
+# =========================================================
+# FRONTEND (Next.js / React)
+# =========================================================
+frontend/node_modules/
+
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/dist/
+
+frontend/.turbo/
+
+# frontend envs
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# package managers
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# =========================================================
+# DATABASES
+# =========================================================
+*.sqlite3
+*.db
+
+# =========================================================
+# UPLOADS / GENERATED FILES
+# =========================================================
+uploads/
+tmp/
+temp/
+
+# =========================================================
+# OS
+# =========================================================
+.DS_Store
+Thumbs.db

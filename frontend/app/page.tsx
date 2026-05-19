@@ -6,9 +6,7 @@ export default function Home() {
   const [fileName, setFileName] = useState("");
   const [uploading, setUploading] = useState(false);
 
-  async function handleFileChange(
-    event: React.ChangeEvent<HTMLInputElement>
-  ) {
+  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
 
     if (!file) return;
@@ -89,9 +87,7 @@ export default function Home() {
             </label>
 
             {fileName && (
-              <p className="mt-4 text-sm text-cyan-300">
-                Uploaded: {fileName}
-              </p>
+              <p className="mt-4 text-sm text-cyan-300">Uploaded: {fileName}</p>
             )}
           </div>
         </div>
