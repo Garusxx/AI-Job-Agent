@@ -37,10 +37,6 @@ export default function Home() {
     <main className="min-h-screen bg-[#0F172A] text-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
         <div className="text-xl font-bold tracking-wide">JobRadar AI</div>
-
-        <button className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium backdrop-blur transition hover:bg-white/10">
-          Sign in
-        </button>
       </nav>
 
       <section className="mx-auto grid max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-2">
