@@ -1,5 +1,6 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
+from cv_parser import extract_cv_text
 import os
 
 app = FastAPI()
@@ -28,8 +29,11 @@ async def upload_cv(file: UploadFile = File(...)):
     with open(file_path, "wb") as buffer:
         content = await file.read()
         buffer.write(content)
+        
+    text = extract_cv_text(file_path)
 
     return {
         "filename": file.filename,
-        "status": "uploaded"
+        "status": "uploaded",
+        "text_preview": text[:1000]
     }
