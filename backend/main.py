@@ -1,6 +1,7 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from cv_parser import extract_cv_text
+from ai_parser import parse_cv_with_ai
 import os
 
 app = FastAPI()
@@ -24,16 +25,24 @@ def root():
 
 @app.post("/upload-cv")
 async def upload_cv(file: UploadFile = File(...)):
-    file_path = f"{UPLOAD_DIR}/{file.filename}"
+    try:
+        file_path = f"{UPLOAD_DIR}/{file.filename}"
 
-    with open(file_path, "wb") as buffer:
-        content = await file.read()
-        buffer.write(content)
-        
-    text = extract_cv_text(file_path)
+        with open(file_path, "wb") as buffer:
+            content = await file.read()
+            buffer.write(content)
 
-    return {
-        "filename": file.filename,
-        "status": "uploaded",
-        "text_preview": text[:1000]
-    }
+        text = extract_cv_text(file_path)
+        profile = parse_cv_with_ai(text)
+
+        return {
+            "filename": file.filename,
+            "status": "uploaded",
+            "profile": profile,
+        }
+
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e),
+        }
