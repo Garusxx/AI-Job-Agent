@@ -21,6 +21,9 @@ def parse_cv_with_ai(cv_text: str):
                 "content": f"""
 Extract structured candidate profile from this CV text.
 
+Choose the SINGLE best and most accurate job search title for this candidate.
+The title should be optimized for searching real job boards.
+
 Return JSON with this exact shape:
 {{
   "name": "",
@@ -32,7 +35,8 @@ Return JSON with this exact shape:
   "roles": [],
   "seniority": "",
   "years_of_experience": "",
-  "technologies": []
+  "technologies": [],
+  "recommended_search_role": ""
 }}
 
 CV TEXT:

@@ -2,6 +2,7 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from cv_parser import extract_cv_text
 from ai_parser import parse_cv_with_ai
+from job_sources.adzuna import search_adzuna_jobs
 
 import os
 from sqlalchemy import text
@@ -78,3 +79,25 @@ def search_jobs(q: str = ""):
             jobs.append(job)
 
         return jobs
+    
+@app.get("/live-jobs/search")
+def live_job_search(q: str, country: str = "gb"):
+    jobs = search_adzuna_jobs(q, country)
+
+    unique_jobs = []
+    seen_companies = set()
+
+    for job in jobs:
+        company = (job.get("company") or "").strip().lower()
+
+        if not company:
+            unique_jobs.append(job)
+            continue
+
+        if company in seen_companies:
+            continue
+
+        seen_companies.add(company)
+        unique_jobs.append(job)
+
+    return unique_jobs
